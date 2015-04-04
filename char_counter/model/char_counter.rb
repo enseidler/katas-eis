@@ -1,7 +1,11 @@
 class CharCounter
 
 	def self.count(string)
-		{"a" => 1}
+		dic = Hash.new
+		string.each_char { |char|
+			dic[char] = string.count char
+		}
+		dic
 	end
 
 end
