@@ -2,10 +2,12 @@ class CharCounter
 
 	def self.count(string)
 		dic = Hash.new
-		string.delete! ' '
-		string.each_char { |char|
-			dic[char] = string.count char
-		}
+		if string != nil
+			string.delete! ' '
+			string.each_char { |char|
+				dic[char] = string.count char
+			}
+		end
 		dic
 	end
 
