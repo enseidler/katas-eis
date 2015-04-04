@@ -1,3 +1,5 @@
+
+
 require 'rspec'
 require_relative '../model/char_counter.rb'
 
@@ -7,7 +9,7 @@ describe 'CharCounter' do
     dic = CharCounter.count('a')
     dic['a'].should be 1
   end
-
+=begin
   it 'should return {b=>nil} when string is a' do
     dic = CharCounter.count('a')
     dic['b'].should be nil
@@ -39,5 +41,5 @@ describe 'CharCounter' do
     dic = CharCounter.count(nil)
     dic.size.should be 0
   end    
-
+=end
 end
