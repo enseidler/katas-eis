@@ -7,5 +7,5 @@ cd ..
 cd char_counter
 bundle exec rake
 cd .. 
-cd tenis_counter
+cd tenis
 bundle exec rake
