@@ -8,7 +8,7 @@ class TenisCounter
         @sets
     end
 
-    def setsGoes(sets_1, sets_2)
+    def match_goes(sets_1, sets_2)
         sets_1 == sets["jugador_1"] && sets_2 == sets["jugador_2"]
     end
 
