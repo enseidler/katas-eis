@@ -13,5 +13,10 @@ describe 'TenisCounter'  do
         counter.game_goes(0,0).should be true
     end
 
+    it 'set games counter should be (0 - 0) when the match begins' do
+        counter = TenisCounter.new
+        counter.set_goes(0,0).should be true
+    end
+
 end
 
