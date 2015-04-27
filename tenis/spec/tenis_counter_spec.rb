@@ -82,4 +82,13 @@ describe 'TenisCounter'  do
         counter.game_goes(40,40).should be true
     end
     
+    it 'set games counter should be (2-2) when each player won 2 games' do
+        counter = TenisCounter.new
+        counter.won_game(TenisCounter::PLAYER_1)
+        counter.won_game(TenisCounter::PLAYER_1)
+        counter.won_game(TenisCounter::PLAYER_2)
+        counter.won_game(TenisCounter::PLAYER_2)
+        counter.set_goes(2,2).should be true
+    end
+
 end
