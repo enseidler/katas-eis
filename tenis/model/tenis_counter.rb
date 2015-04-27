@@ -38,10 +38,6 @@ class TenisCounter
     def game_goes(points_1, points_2)
         points_1 == tenis_notation(PLAYER_1) && points_2 == tenis_notation(PLAYER_2)
     end
-    
-    def won_point(player)
-        points[player] = points[player] + 1
-    end
 
     #Introduces the full tenis points notation (0->30->40-ADV)
     def tenis_notation(player)
@@ -57,6 +53,29 @@ class TenisCounter
         else
             ADV
         end
+    end
+    
+    #Check if the player has enough to win the current game
+    def won_point(player)
+        points[player] = points[player] + 1
+        if(already_won_game(player))
+            won_game(player)
+        end
+    end
+    
+    #Scores the game won by the player
+    def won_game(player)
+        games[player] = games[player] + 1
+    end
+
+    #Check if the player won the game
+    def already_won_game(player)
+        points[player] > 3 && diff_of_two
+    end
+
+    #Verifies if difference between both players is greater or equal than 2 
+    def diff_of_two
+        (points[PLAYER_1] - points[PLAYER_2]).abs > 1 
     end
 
 end
