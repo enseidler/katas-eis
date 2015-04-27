@@ -3,17 +3,17 @@ require_relative '../model/tenis_counter.rb'
 
 describe 'TenisCounter'  do
    
-    it 'sets counter should be (0-0) when the match begins' do
+    it 'counter sets should be (0-0) when the match begins' do
         counter = TenisCounter.new
         counter.match_goes(0,0).should be true
     end
 
-    it 'set games counter should be (0-0) when the match begins' do
+    it 'counter games should be (0-0) when the match begins' do
         counter = TenisCounter.new
         counter.set_goes(0,0).should be true
     end
 
-    it 'game points counter should be (0-0) when the match begins' do
+    it 'game points should be (0-0) when the match begins' do
         counter = TenisCounter.new
         counter.game_goes(0,0).should be true
     end
@@ -82,7 +82,7 @@ describe 'TenisCounter'  do
         counter.game_goes(40,40).should be true
     end
     
-    it 'set games counter should be (2-2) when each player won 2 games' do
+    it 'counter games should be (2-2) when each player won 2 games' do
         counter = TenisCounter.new
         counter.won_game(TenisCounter::PLAYER_1)
         counter.won_game(TenisCounter::PLAYER_1)
@@ -98,6 +98,17 @@ describe 'TenisCounter'  do
         counter.won_point(TenisCounter::PLAYER_1)
         counter.won_point(TenisCounter::PLAYER_1)
         counter.game_goes(0,0).should be true
+    end
+    
+    it 'counter sets should be (0-1) when PLAYER_2 won 6 games' do
+        counter = TenisCounter.new
+        counter.won_game(TenisCounter::PLAYER_2)
+        counter.won_game(TenisCounter::PLAYER_2)
+        counter.won_game(TenisCounter::PLAYER_2)
+        counter.won_game(TenisCounter::PLAYER_2)
+        counter.won_game(TenisCounter::PLAYER_2)
+        counter.won_game(TenisCounter::PLAYER_2)
+        counter.match_goes(0,1).should be true
     end
 
 end

@@ -66,6 +66,7 @@ class TenisCounter
         points[PLAYER_1] = 0
         points[PLAYER_2] = 0
         games[player] = games[player] + 1
+        refresh_set(player)
     end
 
     #Check if the player won the game
@@ -101,6 +102,23 @@ class TenisCounter
     def deuce_again
         points[PLAYER_1] = 3
         points[PLAYER_2] = 3
+    end
+
+    #Decides if player wins current set
+    def refresh_set(player)
+        if(already_won_set(player))
+            won_set(player)
+        end
+    end
+    
+    #Scores the set won by the player
+    def won_set(player)
+        sets[player] = sets[player] + 1
+    end
+
+    #Check if the player has enough to win the current set
+    def already_won_set(player)
+        games[player] == 6
     end
 
 end
