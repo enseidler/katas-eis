@@ -34,7 +34,26 @@ class TenisCounter
 
     #Check score points in the current game, for both players
     def game_goes(points_1, points_2)
-        points_1 == points[PLAYER_1] && points_2 == points[PLAYER_2]
+        points_1 == tenis_notation(PLAYER_1) && 
+        points_2 == tenis_notation(PLAYER_2)
+    end
+    
+    def won_point(player)
+        points[player] = points[player] + 1
+    end
+
+    #Introduces de tenis points notation (0->30->40) without advantage rules
+    def tenis_notation(player)
+        case points[player]
+        when 0
+            0
+        when 1
+            15
+        when 2
+            30
+        when 3
+            40
+        end
     end
 
 end

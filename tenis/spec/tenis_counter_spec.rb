@@ -13,9 +13,15 @@ describe 'TenisCounter'  do
         counter.set_goes(0,0).should be true
     end
 
-    it 'game points counter should be (0 - 0) when the match begins' do
+    it 'game points counter should be (0-0) when the match begins' do
         counter = TenisCounter.new
         counter.game_goes(0,0).should be true
+    end
+    
+    it 'game points should be (15-0) when player wins a point' do
+        counter = TenisCounter.new
+        counter.won_point(TenisCounter::PLAYER_1)
+        counter.game_goes(15,0).should be true
     end
 
 end
