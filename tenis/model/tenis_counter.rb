@@ -63,6 +63,8 @@ class TenisCounter
     
     #Scores the game won by the player
     def won_game(player)
+        points[PLAYER_1] = 0
+        points[PLAYER_2] = 0
         games[player] = games[player] + 1
     end
 
