@@ -113,6 +113,8 @@ class TenisCounter
     
     #Scores the set won by the player
     def won_set(player)
+        games[PLAYER_1] = 0
+        games[PLAYER_2] = 0
         sets[player] = sets[player] + 1
     end
 
