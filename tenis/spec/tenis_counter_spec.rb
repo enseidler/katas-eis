@@ -46,7 +46,7 @@ describe 'TenisCounter'  do
         counter.game_goes(TenisCounter::ADV,40).should be true
     end
 
-    it 'set games counter should be (0-1) when game goes (15-40) and PLAYER_2 wins the point' do
+    it 'PLAYER_2 should win the game when goes (15-40) and wins the point' do
         counter = TenisCounter.new
         counter.won_point(TenisCounter::PLAYER_2)
         counter.won_point(TenisCounter::PLAYER_1)
@@ -54,6 +54,19 @@ describe 'TenisCounter'  do
         counter.won_point(TenisCounter::PLAYER_2)
         counter.won_point(TenisCounter::PLAYER_2)
         counter.set_goes(0,1).should be true
+    end
+
+    it 'PLAYER_1 should win the game when goes (ADV-X) and wins the point' do
+        counter = TenisCounter.new
+        counter.won_point(TenisCounter::PLAYER_1)
+        counter.won_point(TenisCounter::PLAYER_1)
+        counter.won_point(TenisCounter::PLAYER_1)
+        counter.won_point(TenisCounter::PLAYER_2)
+        counter.won_point(TenisCounter::PLAYER_2)
+        counter.won_point(TenisCounter::PLAYER_2)
+        counter.won_point(TenisCounter::PLAYER_1)
+        counter.won_point(TenisCounter::PLAYER_1)
+        counter.set_goes(1,0).should be true
     end
     
 end
