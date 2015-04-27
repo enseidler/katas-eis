@@ -122,4 +122,12 @@ describe 'TenisCounter'  do
         counter.set_goes(0,0).should be true
     end
 
+    it 'should raise an error when try to win point and the match is over' do
+        counter = TenisCounter.new
+        counter.won_set(TenisCounter::PLAYER_1)
+        counter.won_set(TenisCounter::PLAYER_2)
+        counter.won_set(TenisCounter::PLAYER_1)
+        expect{counter.won_point(TenisCounter::PLAYER_2)}.to raise_error('Cannot score point.. Match is over!')
+    end
+
 end

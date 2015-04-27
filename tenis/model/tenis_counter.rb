@@ -57,10 +57,20 @@ class TenisCounter
     
     #Check if the player has enough to win the current game
     def won_point(player)
+        verify_match_state
         points[player] = points[player] + 1
         refresh_game(player)
     end
     
+    #Manages the game state
+    def refresh_game(player)
+        if(already_won_game(player))
+            won_game(player)
+        elsif (advantage(opponent(player)))
+            deuce_again
+        end
+    end
+
     #Scores the game won by the player
     def won_game(player)
         points[PLAYER_1] = 0
@@ -77,15 +87,6 @@ class TenisCounter
     #Verifies if difference between both players is greater or equal than 2 
     def diff_of_two
         (points[PLAYER_1] - points[PLAYER_2]).abs > 1 
-    end
-
-    #Manages the game state
-    def refresh_game(player)
-        if(already_won_game(player))
-            won_game(player)
-        elsif (advantage(opponent(player)))
-            deuce_again
-        end
     end
     
     #Returns true if player has advantage
@@ -121,6 +122,18 @@ class TenisCounter
     #Check if the player has enough to win the current set
     def already_won_set(player)
         games[player] == 6
+    end
+    
+    #Raises an error if match is over
+    def verify_match_state
+        if(match_is_over)
+            raise 'Cannot score point.. Match is over!'
+        end
+    end
+
+    #Returns true if match is finished
+    def match_is_over
+        sets[PLAYER_1] == 2 || sets[PLAYER_2] == 2
     end
 
 end
