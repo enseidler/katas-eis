@@ -34,4 +34,16 @@ describe 'TenisCounter'  do
         counter.game_goes(30,40).should be true
     end
 
+    it 'game points should be (ADV-40) when game goes (40-40) and PLAYER_1 wins the point' do
+        counter = TenisCounter.new
+        counter.won_point(TenisCounter::PLAYER_1)
+        counter.won_point(TenisCounter::PLAYER_1)
+        counter.won_point(TenisCounter::PLAYER_1)
+        counter.won_point(TenisCounter::PLAYER_2)
+        counter.won_point(TenisCounter::PLAYER_2)
+        counter.won_point(TenisCounter::PLAYER_2)
+        counter.won_point(TenisCounter::PLAYER_1)
+        counter.game_goes(TenisCounter::ADV,40).should be true
+    end
+
 end

@@ -4,6 +4,8 @@ class TenisCounter
     PLAYER_1 = 0 
     PLAYER_2 = 1
 
+    ADV = 666 # Integer abstraction for advantage state
+
     def initialize()
         @sets = [0,0] # Number of sets for each player
         @games = [0,0] # Number of games for each player
@@ -34,15 +36,14 @@ class TenisCounter
 
     #Check score points in the current game, for both players
     def game_goes(points_1, points_2)
-        points_1 == tenis_notation(PLAYER_1) && 
-        points_2 == tenis_notation(PLAYER_2)
+        points_1 == tenis_notation(PLAYER_1) && points_2 == tenis_notation(PLAYER_2)
     end
     
     def won_point(player)
         points[player] = points[player] + 1
     end
 
-    #Introduces de tenis points notation (0->30->40) without advantage rules
+    #Introduces the full tenis points notation (0->30->40-ADV)
     def tenis_notation(player)
         case points[player]
         when 0
@@ -53,6 +54,8 @@ class TenisCounter
             30
         when 3
             40
+        else
+            ADV
         end
     end
 
