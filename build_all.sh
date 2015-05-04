@@ -9,5 +9,3 @@ bundle exec rake
 cd .. 
 cd tenis
 bundle exec rake
-cd .. cd battleship
-bundle exec rake
