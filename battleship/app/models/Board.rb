@@ -1,9 +1,11 @@
 class Board
   
-  attr_reader :size
-  
-  def initialize(x,y)
-    @size = [x,y]
+  attr_reader :columns
+  attr_reader :rows
+
+  def initialize(columns,rows)
+    @columns = columns
+    @rows = rows
   end
 
 end

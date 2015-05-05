@@ -11,9 +11,12 @@ describe 'Battleship' do
     expect(@board.kind_of? Board).to eq true
   end
 
-  it 'should create a 5x5 Board' do
-    expect(@board.size[0]).to eq 5
-    expect(@board.size[1]).to eq 5
+  it 'should create a 5x5 Board with 5 columns' do
+    expect(@board.columns).to eq 5
+  end
+
+  it 'should create a 5x5 Board with 5 rows' do
+    expect(@board.rows).to eq 5
   end
 
 end
