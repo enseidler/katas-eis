@@ -2,9 +2,7 @@ require_relative 'BattleshipBoardElement.rb'
 
 class Board
 
-  attr_reader :rows
-  attr_reader :columns
-  attr_reader :coords
+  attr_reader :rows, :columns, :coords
 
   def initialize(rows,columns)
     @rows = rows

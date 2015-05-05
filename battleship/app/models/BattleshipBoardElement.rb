@@ -1,9 +1,14 @@
 class BattleshipBoardElement
+  
   #Abstract class! NOT USE!!
+
   attr_reader :is_water
+
+  #Returns WATER/HIT/SUNK depends on element type
   def get_shoot
     raise 'Should be implemented in subclasses'
   end
+
 end
 
 class Water < BattleshipBoardElement
@@ -26,9 +31,10 @@ class Ship < BattleshipBoardElement
     @is_water = false
     @was_hit = false
   end
-
+  
   def get_shoot
     @was_hit = true
+    raise 'Should be implemented in subclasses'
   end
 
 end
@@ -36,33 +42,19 @@ end
 class SmallShip < Ship
 
   def get_shoot
+    super
     'SUNK'
   end
 
 end
 
-class LargeShipProw < Ship
-
-  attr_writer :stern
-
-  def get_shoot
-    super
-    if @stern.was_hit
-      'SUNK'
-    else
-      'HIT'
-    end
-  end
-
-end
-
-class LargeShipStern < Ship
+class LargeShipPart < Ship
   
-  attr_writer :prow
+  attr_writer :other_part
 
   def get_shoot
     super
-    if @prow.was_hit
+    if @other_part.was_hit
       'SUNK'
     else
       'HIT'
@@ -75,11 +67,11 @@ class LargeShipParts
   
   #Returns both of large ship parts
   def self.parts
-    prow = LargeShipProw.new
-  	stern = LargeShipStern.new
-  	prow.stern = stern
-  	stern.prow = prow
-  	[prow,stern]
+    prow = LargeShipPart.new
+    stern = LargeShipPart.new
+    prow.other_part = stern
+    stern.other_part = prow
+    [prow,stern]
   end
 
 end
