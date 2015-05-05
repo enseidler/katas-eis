@@ -31,7 +31,9 @@ class Board
 
   #Shoot on a position, and returns the result on a string 
   def shoot(row,column)
-    unless is_empty row,column
+    if is_empty row,column
+      'WATER'
+    else
       'HIT'
     end
   end
