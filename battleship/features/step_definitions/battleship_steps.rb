@@ -26,13 +26,13 @@ end
 
 Given(/^I shoot to position "(.*?)"$/) do |coord|
   row, column = coord.split(":")
-  @shoot_1 = @board.shoot(row.to_i,column.to_i)
+  @shoot = @board.shoot(row.to_i,column.to_i)
 end
 
 Then(/^I get hit$/) do
-  expect(@shoot_1).to eq 'HIT'
+  expect(@shoot).to eq 'HIT'
 end
 
 Then(/^I get water$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(@shoot).to eq 'WATER' 
 end
