@@ -32,3 +32,7 @@ end
 Then(/^I get hit$/) do
   expect(@shoot_1).to eq 'HIT'
 end
+
+Then(/^I get water$/) do
+  pending # express the regexp above with the code you wish you had
+end
