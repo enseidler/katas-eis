@@ -70,3 +70,16 @@ class LargeShipStern < Ship
   end
 
 end
+
+class LargeShipParts
+  
+  #Returns both of large ship parts
+  def self.parts
+    prow = LargeShipProw.new
+  	stern = LargeShipStern.new
+  	prow.stern = stern
+  	stern.prow = prow
+  	[prow,stern]
+  end
+
+end

@@ -19,10 +19,7 @@ class Board
 
   #Create large ship on coordinate. Horizontally from left to right
   def put_large_ship(row,column)
-  	prow = LargeShipProw.new
-  	stern = LargeShipStern.new
-  	prow.stern = stern
-  	stern.prow = prow
+  	prow,stern = LargeShipParts.parts
     @coords[row][column] = prow 
     @coords[row][column+1] = stern
   end
