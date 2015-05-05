@@ -4,10 +4,12 @@ Given(/^a board with dimensions "(.*?)" x "(.*?)"$/) do |columns, rows|
   @board = Board.new columns.to_i, rows.to_i
 end
 
-Given(/^I create a small ship in position "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Given(/^I create a small ship in position "(.*?)"$/) do |coord|
+  column, row = coord.split(":")
+  @board.put_small_ship(column.to_i,row.to_i)
 end
 
-Then(/^position "(.*?)" is not empty$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then(/^position "(.*?)" is not empty$/) do |coord|
+  column, row = coord.split(":")
+  expect(@board.is_empty(column.to_i,row.to_i)).to eq false
 end
