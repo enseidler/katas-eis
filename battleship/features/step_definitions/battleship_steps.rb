@@ -38,6 +38,6 @@ Then(/^I get water$/) do
 end
 
 Then(/^I get sunk$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(@shoot).to eq 'SUNK'
 end
 

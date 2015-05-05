@@ -15,7 +15,7 @@ Feature: Shoot
     Given I shoot to position "3:2"
     Then I get water
 
-  @wip
+  
   Scenario: Shoot and sunk
     Given I shoot to position "3:4"
     Then I get hit
