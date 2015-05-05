@@ -19,14 +19,21 @@ class Board
 
   #Create large ship on coordinate. Horizontally from left to right
   def put_large_ship(row,column)
-  	ship = LargeShip.new
-  	@coords[row][column] = ship
-  	@coords[row][column+1] = ship 
+    ship = LargeShip.new
+    @coords[row][column] = ship
+    @coords[row][column+1] = ship 
   end
   
   #Check if the coordinate are empty
   def is_empty(row,column)
-  	@coords[row][column].nil?
+    @coords[row][column].nil?
+  end
+
+  #Shoot on a position, and returns the result on a string 
+  def shoot(row,column)
+    unless is_empty row,column
+      'HIT'
+    end
   end
 
 end

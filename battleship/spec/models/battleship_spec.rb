@@ -30,4 +30,9 @@ describe 'Battleship' do
     expect(@board.is_empty(3,4)).to eq false
   end
 
+  it 'should get hit when shoot on a large ship' do
+    @board.put_large_ship 3,3
+    expect(@board.shoot(3,3)).to eq 'HIT'
+  end
+
 end
