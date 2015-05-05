@@ -34,7 +34,6 @@ class Ship < BattleshipBoardElement
   
   def get_shoot
     @was_hit = true
-    raise 'Should be implemented in subclasses'
   end
 
 end
