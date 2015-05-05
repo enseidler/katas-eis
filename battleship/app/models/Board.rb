@@ -17,6 +17,13 @@ class Board
     @coords[row][column] = SmallShip.new
   end
 
+  #Create large ship on coordinate. Horizontally from left to right
+  def put_large_ship(row,column)
+  	ship = LargeShip.new
+  	@coords[row][column] = ship
+  	@coords[row][column+1] = ship 
+  end
+  
   #Check if the coordinate are empty
   def is_empty(row,column)
   	@coords[row][column].nil?

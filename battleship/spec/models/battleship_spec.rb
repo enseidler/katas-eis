@@ -23,5 +23,11 @@ describe 'Battleship' do
     @board.put_small_ship 3,3
     expect(@board.is_empty(3,3)).to eq false
   end
-  
+
+  it 'should create large ship in 3:3 and 3:4 locations' do
+    @board.put_large_ship 3,3
+    expect(@board.is_empty(3,3)).to eq false
+    expect(@board.is_empty(3,4)).to eq false
+  end
+
 end
