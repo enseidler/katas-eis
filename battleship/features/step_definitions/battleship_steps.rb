@@ -24,10 +24,11 @@ Given(/^a larg ship in position "(.*?)"$/) do |coord|
   @board.put_large_ship(row.to_i,column.to_i)
 end
 
-Given(/^I shoot to position "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Given(/^I shoot to position "(.*?)"$/) do |coord|
+  row, column = coord.split(":")
+  @shoot_1 = @board.shoot(row.to_i,column.to_i)
 end
 
 Then(/^I get hit$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(@shoot_1).to eq 'HIT'
 end
