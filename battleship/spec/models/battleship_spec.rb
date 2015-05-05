@@ -39,5 +39,11 @@ describe 'Battleship' do
     @board.put_large_ship 3,3
     expect(@board.shoot(3,2)).to eq 'WATER'
   end
+  
+  it 'should get hit&sunk when shoot on both sides of a large ship' do
+    @board.put_large_ship 3,3
+    expect(@board.shoot(3,4)).to eq 'HIT'
+    expect(@board.shoot(3,3)).to eq 'SUNK'
+  end
 
 end

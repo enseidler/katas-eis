@@ -1,4 +1,4 @@
-require_relative 'Ship.rb'
+require_relative 'BattleshipBoardElement.rb'
 
 class Board
 
@@ -9,7 +9,7 @@ class Board
   def initialize(rows,columns)
     @rows = rows
     @columns = columns
-    @coords = Array.new(rows, Array.new(columns) {}) 
+    @coords = Array.new(rows, Array.new(columns) { Water.new }) 
   end
 
   #Create small ship on coordinate
@@ -19,23 +19,22 @@ class Board
 
   #Create large ship on coordinate. Horizontally from left to right
   def put_large_ship(row,column)
-    ship = LargeShip.new
-    @coords[row][column] = ship
-    @coords[row][column+1] = ship 
+  	prow = LargeShipProw.new
+  	stern = LargeShipStern.new
+  	prow.stern = stern
+  	stern.prow = prow
+    @coords[row][column] = prow 
+    @coords[row][column+1] = stern
   end
   
   #Check if the coordinate are empty
   def is_empty(row,column)
-    @coords[row][column].nil?
+    @coords[row][column].is_water
   end
 
   #Shoot on a position, and returns the result on a string 
   def shoot(row,column)
-    if is_empty row,column
-      'WATER'
-    else
-      'HIT'
-    end
+    @coords[row][column].get_shoot
   end
 
 end
