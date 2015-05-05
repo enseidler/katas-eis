@@ -46,4 +46,9 @@ describe 'Battleship' do
     expect(@board.shoot(3,3)).to eq 'SUNK'
   end
 
+  it 'should get sunk when shoot on  a small ship' do
+    @board.put_small_ship 2,1
+    expect(@board.shoot(2,1)).to eq 'SUNK'
+  end
+
 end
