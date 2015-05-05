@@ -19,4 +19,9 @@ describe 'Battleship' do
     expect(@board.rows).to eq 5
   end
 
+  it 'should create small ship in 3:3 location' do
+    @board.put_small_ship 3,3
+    expect(@board.is_empty(3,3)).to eq false
+  end
+
 end
