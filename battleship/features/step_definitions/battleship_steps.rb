@@ -13,3 +13,8 @@ Then(/^position "(.*?)" is not empty$/) do |coord|
   column, row = coord.split(":")
   expect(@board.is_empty(column.to_i,row.to_i)).to eq false
 end
+
+Given(/^I create a large ship in position "(.*?)"$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
