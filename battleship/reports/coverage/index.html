@@ -14,7 +14,7 @@
       <img src="./assets/0.7.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-05-05T02:05:03-03:00">2015-05-05T02:05:03-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-05-05T02:34:41-03:00">2015-05-05T02:34:41-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -63,7 +63,7 @@
       <tr>
         <td class="strong"><a href="#9eb5375b2e0758be645c5c714d64dce984c0eecd" class="src_link" title="app/models/Ship.rb">app/models/Ship.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>2</td>
+        <td>3</td>
         <td>1</td>
         <td>1</td>
         <td>0</td>
@@ -121,7 +121,7 @@
       <tr>
         <td class="strong"><a href="#9eb5375b2e0758be645c5c714d64dce984c0eecd" class="src_link" title="app/models/Ship.rb">app/models/Ship.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>2</td>
+        <td>3</td>
         <td>1</td>
         <td>1</td>
         <td>0</td>
@@ -252,19 +252,19 @@
         <li class="never" data-hits="" data-linenumber="4">
           
           
-          <code class="ruby">  </code>
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="5">
           <span class="hits">1</span>
           
-          <code class="ruby">  attr_reader :columns</code>
+          <code class="ruby">  attr_reader :rows</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="6">
           <span class="hits">1</span>
           
-          <code class="ruby">  attr_reader :rows</code>
+          <code class="ruby">  attr_reader :columns</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="7">
@@ -282,19 +282,19 @@
         <li class="covered" data-hits="1" data-linenumber="9">
           <span class="hits">1</span>
           
-          <code class="ruby">  def initialize(columns,rows)</code>
+          <code class="ruby">  def initialize(rows,columns)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="10">
           <span class="hits">1</span>
           
-          <code class="ruby">    @columns = columns</code>
+          <code class="ruby">    @rows = rows</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="11">
           <span class="hits">1</span>
           
-          <code class="ruby">    @rows = rows</code>
+          <code class="ruby">    @columns = columns</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="12">
@@ -324,13 +324,13 @@
         <li class="covered" data-hits="1" data-linenumber="16">
           <span class="hits">1</span>
           
-          <code class="ruby">  def put_small_ship(column,row)</code>
+          <code class="ruby">  def put_small_ship(row,column)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="17">
           <span class="hits">1</span>
           
-          <code class="ruby">    @coords[column][row] = SmallShip.new</code>
+          <code class="ruby">    @coords[row][column] = SmallShip.new</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="18">
@@ -342,7 +342,7 @@
         <li class="never" data-hits="" data-linenumber="19">
           
           
-          <code class="ruby">  </code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="20">
@@ -354,13 +354,13 @@
         <li class="covered" data-hits="1" data-linenumber="21">
           <span class="hits">1</span>
           
-          <code class="ruby">  def is_empty(column,row)</code>
+          <code class="ruby">  def is_empty(row,column)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="22">
           <span class="hits">1</span>
           
-          <code class="ruby">  	@coords[column][row].nil?</code>
+          <code class="ruby">  	@coords[row][column].nil?</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="23">
@@ -409,6 +409,12 @@
           
           
           <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="3">
+          
+          
+          <code class="ruby"></code>
         </li>
       
     </ol>

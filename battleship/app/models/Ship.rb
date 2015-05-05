@@ -1,2 +1,3 @@
 class SmallShip
 end
+

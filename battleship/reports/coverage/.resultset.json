@@ -2,7 +2,7 @@
   "RSpec": {
     "coverage": {
     },
-    "timestamp": 1430802300
+    "timestamp": 1430804078
   },
   "Cucumber Features": {
     "coverage": {
@@ -35,9 +35,10 @@
       ],
       "/home/ezequiel/katas-eis/battleship/app/models/Ship.rb": [
         1,
+        null,
         null
       ]
     },
-    "timestamp": 1430802303
+    "timestamp": 1430804081
   }
 }
