@@ -19,3 +19,15 @@ Given(/^I create a large ship in position "(.*?)"$/) do |coord|
   @board.put_large_ship(row.to_i,column.to_i)
 end
 
+Given(/^a larg ship in position "(.*?)"$/) do |coord|
+  row, column = coord.split(":")
+  @board.put_large_ship(row.to_i,column.to_i)
+end
+
+Given(/^I shoot to position "(.*?)"$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I get hit$/) do
+  pending # express the regexp above with the code you wish you had
+end
