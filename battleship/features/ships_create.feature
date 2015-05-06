@@ -14,3 +14,8 @@ Feature: Ships create
     Given I create a large ship in position "3:3"
     Then position "3:3" is not empty
     And position "3:4" is not empty
+
+  @wip
+  Scenario: Create a ship over other ship
+    When I create a large ship in position "2:3"
+    Then I get error "There is other ship already"
