@@ -69,4 +69,8 @@ describe 'Battleship' do
     expect{ @board.put_small_ship(5,6) }.to raise_error('Location out of board!')
   end
 
+  it 'should raise exception when create a large ship outside of board' do
+    expect{ @board.put_large_ship(1,4) }.to raise_error('Location out of board!')
+  end
+
 end

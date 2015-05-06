@@ -37,7 +37,9 @@ class Board
 
   #Raise an error if coordinates to large ship isn't empty
   def verify_large_ship_location(row,column)
-    if (!is_empty(row,column)) || (!is_empty(row,column+1))
+    if out_of_board(row,column) || out_of_board(row,column+1)
+      raise 'Location out of board!'
+    elsif (!is_empty(row,column)) || (!is_empty(row,column+1))
     	raise 'There is another ship already!'
     end
   end
