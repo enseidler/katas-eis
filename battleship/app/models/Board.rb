@@ -14,7 +14,15 @@ class Board
 
   #Create small ship on coordinate
   def put_small_ship(row,column)
+    verify_small_ship_location(row,column)
     @coords[row][column] = SmallShip.new
+  end
+
+  #Raise an error if coordinate to small ship isn't empty
+  def verify_small_ship_location(row,column)
+    if !is_empty(row,column)
+      raise 'There is another ship already!'
+    end
   end
 
   #Create large ship on coordinate. Horizontally from left to right
@@ -25,7 +33,7 @@ class Board
     @coords[row][column+1] = stern
   end
 
-  #Raise an error if coordinate isn't empty
+  #Raise an error if coordinates to large ship isn't empty
   def verify_large_ship_location(row,column)
     if (!is_empty(row,column)) || (!is_empty(row,column+1))
     	raise 'There is another ship already!'

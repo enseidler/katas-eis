@@ -60,4 +60,9 @@ describe 'Battleship' do
     expect{ @board.put_large_ship(3,2) }.to raise_error('There is another ship already!')
   end
 
+  it 'should raise exception when create a small ship over other ship' do
+    @board.put_large_ship 3,3
+    expect{ @board.put_small_ship(3,4) }.to raise_error('There is another ship already!')
+  end
+
 end
