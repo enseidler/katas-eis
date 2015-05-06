@@ -18,9 +18,11 @@ class Board
     @coords[row][column] = SmallShip.new
   end
 
-  #Raise an error if coordinate to small ship isn't empty
+  #Raise an error if coordinate to small ship isn't empty or doesn't exist
   def verify_small_ship_location(row,column)
-    if !is_empty(row,column)
+    if out_of_board(row,column)
+      raise 'Location out of board!'
+    elsif !is_empty(row,column)
       raise 'There is another ship already!'
     end
   end

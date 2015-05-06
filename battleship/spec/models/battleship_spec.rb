@@ -65,4 +65,8 @@ describe 'Battleship' do
     expect{ @board.put_small_ship(3,4) }.to raise_error('There is another ship already!')
   end
 
+  it 'should raise exception when create a small ship outside of board' do
+    expect{ @board.put_small_ship(5,6) }.to raise_error('Location out of board!')
+  end
+
 end
