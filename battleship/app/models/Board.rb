@@ -1,6 +1,8 @@
 require_relative 'BattleshipBoardElement.rb'
 
 class Board
+  #Row locations on board are from 0 to (rows - 1)
+  #Column locations on board are from 0 to (columns - 1)
 
   attr_reader :rows, :columns, :coords
 

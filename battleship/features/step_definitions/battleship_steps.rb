@@ -41,3 +41,9 @@ Then(/^I get sunk$/) do
   expect(@shoot).to eq 'SUNK'
 end
 
+Then(/^I get error "(.*?)"$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+
+
