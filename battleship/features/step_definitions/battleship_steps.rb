@@ -6,7 +6,10 @@ end
 
 Given(/^I create a small ship in position "(.*?)"$/) do |coord|
   row, column = coord.split(":")
-  @board.put_small_ship(row.to_i,column.to_i)
+  begin
+    @board.put_small_ship(row.to_i,column.to_i)
+  rescue RuntimeError => @error
+  end
 end
 
 Then(/^position "(.*?)" is not empty$/) do |coord|
@@ -16,19 +19,25 @@ end
 
 Given(/^I create a large ship in position "(.*?)"$/) do |coord|
   row, column = coord.split(":")
-  @board.put_large_ship(row.to_i,column.to_i)
+  begin
+    @board.put_large_ship(row.to_i,column.to_i)
+  rescue RuntimeError => @error
+  end
 end
 
-Given(/^a larg ship in position "(.*?)"$/) do |coord|
+Given(/^a large ship in position "(.*?)"$/) do |coord|
   row, column = coord.split(":")
-  @board.put_large_ship(row.to_i,column.to_i)
+  begin
+    @board.put_large_ship(row.to_i,column.to_i)
+  rescue RuntimeError => @error
+  end
 end
 
 Given(/^I shoot to position "(.*?)"$/) do |coord|
   row, column = coord.split(":")
   begin
     @shoot = @board.shoot(row.to_i,column.to_i)
-  rescue RuntimeError => @out_of_board
+  rescue RuntimeError => @error
   end
 end
 
@@ -45,7 +54,7 @@ Then(/^I get sunk$/) do
 end
 
 Then(/^I get error "(.*?)"$/) do |msj|
-  expect{ raise @out_of_board }.to raise_error(msj)
+  expect{ raise @error }.to raise_error(msj)
 end
 
 

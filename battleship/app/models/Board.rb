@@ -53,13 +53,13 @@ class Board
   
   #Raise an error if coordinate doesn't exist
   def verify_shoot_location(row,column)
-    if shoot_out_of_board row,column
+    if out_of_board row,column
       raise 'Shoot out of board!'
     end
   end
 
   #Check if coordinate doesn't exist
-  def shoot_out_of_board(row,column)
+  def out_of_board(row,column)
     (!(0...@rows).include? row) ||
     (!(0...@columns).include? column)
   end
