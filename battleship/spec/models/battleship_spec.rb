@@ -51,4 +51,8 @@ describe 'Battleship' do
     expect(@board.shoot(2,1)).to eq 'SUNK'
   end
 
+  it 'should raise exception when shoot outside of board' do
+    expect{@board.shoot(5,5)}.to raise_error('Shoot out of board!')
+  end
+
 end
