@@ -25,5 +25,5 @@ Feature: Shoot
   
   Scenario: Shoot outside of board
     When I shoot to position "5:5"
-    Then I get error "Out of board!"
+    Then I get error "Shoot out of board!"
   

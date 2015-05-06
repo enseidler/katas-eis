@@ -45,7 +45,7 @@ Then(/^I get sunk$/) do
 end
 
 Then(/^I get error "(.*?)"$/) do |msj|
-  expect{ raise @out_of_board }.to raise_error('Shoot out of board!')
+  expect{ raise @out_of_board }.to raise_error(msj)
 end
 
 
