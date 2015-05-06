@@ -26,7 +26,10 @@ end
 
 Given(/^I shoot to position "(.*?)"$/) do |coord|
   row, column = coord.split(":")
-  @shoot = @board.shoot(row.to_i,column.to_i)
+  begin
+    @shoot = @board.shoot(row.to_i,column.to_i)
+  rescue RuntimeError => @out_of_board
+  end
 end
 
 Then(/^I get hit$/) do
@@ -41,8 +44,8 @@ Then(/^I get sunk$/) do
   expect(@shoot).to eq 'SUNK'
 end
 
-Then(/^I get error "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then(/^I get error "(.*?)"$/) do |msj|
+  expect{ raise @out_of_board }.to raise_error('Shoot out of board!')
 end
 
 
