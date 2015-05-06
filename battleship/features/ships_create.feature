@@ -20,3 +20,8 @@ Feature: Ships create
     When I create a large ship in position "3:3"
     And I create a large ship in position "3:2"
     Then I get error "There is another ship already!"
+
+  @wip
+  Scenario: Create a ship outside of board
+    When I create a small ship in position "5:6"
+    Then I get error "Location out of board!"
