@@ -18,4 +18,4 @@ Feature: Ships create
   @wip
   Scenario: Create a ship over other ship
     When I create a large ship in position "2:3"
-    Then I get error "There is other ship already"
+    Then I get error "There is other ship already!"

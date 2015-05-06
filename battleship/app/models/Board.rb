@@ -9,7 +9,7 @@ class Board
   def initialize(rows,columns)
     @rows = rows
     @columns = columns
-    @coords = Array.new(rows, Array.new(columns) { Water.new }) 
+    @coords = Array.new(rows) { Array.new(columns) { Water.new } } 
   end
 
   #Create small ship on coordinate
@@ -19,9 +19,17 @@ class Board
 
   #Create large ship on coordinate. Horizontally from left to right
   def put_large_ship(row,column)
+  	verify_large_ship_location(row,column)
   	prow,stern = LargeShipParts.parts
-    @coords[row][column] = prow 
+    @coords[row][column] = prow
     @coords[row][column+1] = stern
+  end
+
+  #Raise an error if coordinate isn't empty
+  def verify_large_ship_location(row,column)
+    if (!is_empty(row,column)) || (!is_empty(row,column+1))
+    	raise 'There is another ship already!'
+    end
   end
   
   #Check if the coordinate are empty

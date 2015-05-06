@@ -52,7 +52,12 @@ describe 'Battleship' do
   end
 
   it 'should raise exception when shoot outside of board' do
-    expect{@board.shoot(5,5)}.to raise_error('Shoot out of board!')
+    expect{ @board.shoot(5,5) }.to raise_error('Shoot out of board!')
+  end
+
+  it 'should raise exception when create a large ship over other ship' do
+    @board.put_large_ship 3,3
+    expect{ @board.put_large_ship(3,2) }.to raise_error('There is another ship already!')
   end
 
 end
