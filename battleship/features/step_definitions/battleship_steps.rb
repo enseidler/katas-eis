@@ -48,7 +48,7 @@ Then(/^I get hit$/) do
 end
 
 Then(/^I get water$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page.find('#last_event')).to have_content('WATER')
 end
 
 Then(/^I get sunk$/) do
