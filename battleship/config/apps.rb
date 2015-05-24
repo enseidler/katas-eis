@@ -25,7 +25,6 @@
 # Setup global project settings for your apps. These settings are inherited by every subapp. You can
 # override these settings in the subapps as needed.
 #
-=begin
 Padrino.configure_apps do
   # enable :sessions
   set :session_secret, ENV['session_secret']
@@ -33,6 +32,12 @@ Padrino.configure_apps do
   set :protect_from_csrf, true
 end
 
+Capybara.configure do |c|
+  c.javascript_driver = :poltergeist
+  c.default_driver = :poltergeist
+  c.app_host = "http://localhost:3000"
+end
+
 # Mounts the core application for this project
 Padrino.mount('Battleship::App', :app_file => Padrino.root('app/app.rb')).to('/')
-=end
+
