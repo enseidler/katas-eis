@@ -52,7 +52,7 @@ Then(/^I get water$/) do
 end
 
 Then(/^I get sunk$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page.find('#last_event')).to have_content('SUNK')
 end
 
 Then(/^I get error "(.*?)"$/) do |msj|
