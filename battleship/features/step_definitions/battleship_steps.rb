@@ -50,7 +50,7 @@ Then(/^I get sunk$/) do
 end
 
 Then(/^I get error "(.*?)"$/) do |msj|
-  pending # express the regexp above with the code you wish you had
+  expect(page.find('#last_event')).to have_content(msj)
 end
 
 
