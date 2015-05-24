@@ -20,8 +20,8 @@ module Battleship
 
     post 'create_small' do
       begin
-        session[:board].put_small_ship(params[:in_row].to_i, params[:in_column].to_i)
-        @last_event = 'Ship succefully created in ('+params[:in_row].to_s+','+params[:in_column].to_s+')'
+        session[:board].put_small_ship(params[:small_row].to_i, params[:small_column].to_i)
+        @last_event = 'Small ship succefully created in ('+params[:small_row].to_s+','+params[:small_column].to_s+')'
       rescue RuntimeError => error
         @last_event = error.message       
       end
@@ -34,6 +34,17 @@ module Battleship
         @last_event = 'The position ('+params[:row].to_s+','+params[:column].to_s+') is empty'
       else
         @last_event = 'The position ('+params[:row].to_s+','+params[:column].to_s+') has a ship'
+      end
+      @board = session[:board]
+      render 'battle/battle'      
+    end
+    
+    post 'create_large' do
+      begin
+        session[:board].put_large_ship(params[:large_row].to_i, params[:large_column].to_i)
+        @last_event = 'Large ship succefully created in ('+params[:large_row].to_s+','+params[:large_column].to_s+')'
+      rescue RuntimeError => error
+        @last_event = error.message       
       end
       @board = session[:board]
       render 'battle/battle'      

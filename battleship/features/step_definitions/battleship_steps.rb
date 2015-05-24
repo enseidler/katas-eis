@@ -8,8 +8,8 @@ end
 
 Given(/^I create a small ship in position "(.*?)"$/) do |coord|
   row, column = coord.split ':'
-  fill_in :in_row, :with => row
-  fill_in :in_column, :with => column
+  fill_in :small_row, :with => row
+  fill_in :small_column, :with => column
   click_button 'create_small_button'
 end
 
@@ -23,7 +23,10 @@ Then(/^position "(.*?)" is not empty$/) do |coord|
 end
 
 Given(/^I create a large ship in position "(.*?)"$/) do |coord|
-  pending # express the regexp above with the code you wish you had
+  row, column = coord.split ':'
+  fill_in :large_row, :with => row
+  fill_in :large_column, :with => column
+  click_button 'create_large_button'
 end
 
 Given(/^a large ship in position "(.*?)"$/) do |coord|

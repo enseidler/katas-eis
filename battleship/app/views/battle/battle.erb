@@ -28,7 +28,7 @@
 		    <div class="col-md-6 top-50">
 			    <div class="row top-50">
 				    <div class="col-md-6 text-center">
-				       	<h2>Create ship</h2>
+				       	<h2>Create small ship</h2>
 				       	<p>Rows beetwen 0 and <%= @board.rows.to_i - 1 %></p>
 				       	<p>Columns beetwen 0 and <%= @board.columns.to_i - 1 %></p>
 				       	<form role="form" method="POST" action="create_small">
@@ -36,13 +36,13 @@
 				            <div class="form-group">
 				                <div class="input-group input-group-lg">
 				                    <span class="input-group-addon" id="sizing-addon1">Row</span>
-				                    <input min="0" class="form-control" placeholder="Select row" type="number" name="in_row">
+				                    <input min="0" class="form-control" placeholder="Select row" type="number" name="small_row">
 				                </div>
 				            </div>
 				    	    <div class="form-group">
 				                <div class="input-group input-group-lg">
 				                    <span class="input-group-addon" id="sizing-addon1">Column</span>
-				                    <input min="0" class="form-control" placeholder="Select column" type="number" name="in_column">
+				                    <input min="0" class="form-control" placeholder="Select column" type="number" name="small_column">
 				                </div>
 				            </div>
 				            <div class="btn-group " role="group" aria-label="...">
@@ -73,6 +73,31 @@
 			                </div>
 			            </form>
 			        </div>
+		        </div>
+		        <div class="row top-50">
+				    <div class="col-md-6 text-center">
+				       	<h2>Create large ship</h2>
+				       	<p>Rows beetwen 0 and <%= @board.rows.to_i - 1 %></p>
+				       	<p>Columns beetwen 0 and <%= @board.columns.to_i - 1 %></p>
+				       	<form role="form" method="POST" action="create_large">
+				           	<%= csrf_token_field %>
+				            <div class="form-group">
+				                <div class="input-group input-group-lg">
+				                    <span class="input-group-addon" id="sizing-addon1">Row</span>
+				                    <input min="0" class="form-control" placeholder="Select row" type="number" name="large_row">
+				                </div>
+				            </div>
+				    	    <div class="form-group">
+				                <div class="input-group input-group-lg">
+				                    <span class="input-group-addon" id="sizing-addon1">Column</span>
+				                    <input min="0" class="form-control" placeholder="Select column" type="number" name="large_column">
+				                </div>
+				            </div>
+				            <div class="btn-group " role="group" aria-label="...">
+				                <button type="submit" value="create" id="create_large_button" class="btn btn-primary btn-lg">Create Large Ship!</button>
+				            </div>
+				        </form>
+				    </div>
 		        </div>
 		    </div>
 		    <div class="col-md-6 top-50">
