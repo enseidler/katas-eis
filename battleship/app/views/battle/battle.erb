@@ -98,6 +98,29 @@
 				            </div>
 				        </form>
 				    </div>
+				    <div class="col-md-6 text-center">
+			        	<h2>Shoot in position!</h2>
+			        	<p>Rows beetwen 0 and <%= @board.rows.to_i - 1 %></p>
+			        	<p>Columns beetwen 0 and <%= @board.columns.to_i - 1 %></p>
+			        	<form role="form" method="POST" action="shoot">
+			            	<%= csrf_token_field %>
+			                <div class="form-group">
+			                    <div class="input-group input-group-lg">
+			                        <span class="input-group-addon" id="sizing-addon1">Row</span>
+			                        <input min="0" class="form-control" placeholder="Target row" type="number" name="shoot_row">
+			                    </div>
+			                </div>
+			                <div class="form-group">
+			                    <div class="input-group input-group-lg">
+			                        <span class="input-group-addon" id="sizing-addon1">Column</span>
+			                        <input min="0" class="form-control" placeholder="Target column" type="number" name="shoot_column">
+			                    </div>
+			                </div>
+			                <div class="btn-group " role="group" aria-label="...">
+			                    <button type="submit" value="check" id="shoot_button" class="btn btn-primary btn-lg">Shoot!</button>
+			                </div>
+			            </form>
+			        </div>
 		        </div>
 		    </div>
 		    <div class="col-md-6 top-50">

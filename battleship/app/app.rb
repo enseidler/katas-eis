@@ -50,5 +50,15 @@ module Battleship
       render 'battle/battle'      
     end
 
+    post 'shoot' do
+      begin
+        @last_event = session[:board].shoot(params[:shoot_row].to_i, params[:shoot_column].to_i)
+      rescue RuntimeError => error
+        @last_event = error.message       
+      end
+      @board = session[:board]
+      render 'battle/battle'      
+    end
+
   end
 end

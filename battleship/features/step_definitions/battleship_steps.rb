@@ -37,11 +37,14 @@ Given(/^a large ship in position "(.*?)"$/) do |coord|
 end
 
 Given(/^I shoot to position "(.*?)"$/) do |coord|
-  pending # express the regexp above with the code you wish you had
+  row, column = coord.split ':'
+  fill_in :shoot_row, :with => row
+  fill_in :shoot_column, :with => column
+  click_button 'shoot_button'
 end
 
 Then(/^I get hit$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page.find('#last_event')).to have_content('HIT')
 end
 
 Then(/^I get water$/) do
