@@ -1,60 +1,42 @@
-require_relative '../../app/models/Board.rb'
 
 Given(/^a board with dimensions "(.*?)" x "(.*?)"$/) do |rows,columns|
-  @board = Board.new rows.to_i,columns.to_i
+  visit '/start'
 end
 
 Given(/^I create a small ship in position "(.*?)"$/) do |coord|
-  row, column = coord.split(":")
-  begin
-    @board.put_small_ship(row.to_i,column.to_i)
-  rescue RuntimeError => @error
-  end
+  pending # express the regexp above with the code you wish you had
 end
 
 Then(/^position "(.*?)" is not empty$/) do |coord|
-  row, column = coord.split(":")
-  expect(@board.is_empty(row.to_i,column.to_i)).to eq false
+  pending # express the regexp above with the code you wish you had
 end
 
 Given(/^I create a large ship in position "(.*?)"$/) do |coord|
-  row, column = coord.split(":")
-  begin
-    @board.put_large_ship(row.to_i,column.to_i)
-  rescue RuntimeError => @error
-  end
+  pending # express the regexp above with the code you wish you had
 end
 
 Given(/^a large ship in position "(.*?)"$/) do |coord|
-  row, column = coord.split(":")
-  begin
-    @board.put_large_ship(row.to_i,column.to_i)
-  rescue RuntimeError => @error
-  end
+  pending # express the regexp above with the code you wish you had
 end
 
 Given(/^I shoot to position "(.*?)"$/) do |coord|
-  row, column = coord.split(":")
-  begin
-    @shoot = @board.shoot(row.to_i,column.to_i)
-  rescue RuntimeError => @error
-  end
+  pending # express the regexp above with the code you wish you had
 end
 
 Then(/^I get hit$/) do
-  expect(@shoot).to eq 'HIT'
+  pending # express the regexp above with the code you wish you had
 end
 
 Then(/^I get water$/) do
-  expect(@shoot).to eq 'WATER' 
+  pending # express the regexp above with the code you wish you had
 end
 
 Then(/^I get sunk$/) do
-  expect(@shoot).to eq 'SUNK'
+  pending # express the regexp above with the code you wish you had
 end
 
 Then(/^I get error "(.*?)"$/) do |msj|
-  expect{ raise @error }.to raise_error(msj)
+  pending # express the regexp above with the code you wish you had
 end
 
 
