@@ -2,6 +2,7 @@
 <html lang="en-US">
 	<head>
 		<title>Battleship</title>
+		<link rel="shortcut icon" href="http://cdn7.staztic.com/app/a/2931/2931090/battleships-fleet-battle-13-l-48x48.png" type="image/x-icon"/>
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
@@ -10,6 +11,20 @@
 	    <style type="text/css">
 	    	body { padding-top: 50px; }
 			.top-50 { margin-top: 50px; }
+			.board { margin: 0 auto;}
+		    .board table { border: 10px ridge; }
+		    .board table tr td {
+		    	width: 60px;
+		        height: 60px;
+		        border: 3px dotted white;
+		    }
+		    .water { background-color: #277AD4; }
+		    .ship-hit { background-color: #BA1900; }
+		    .ship { background-color: #A5880C; }
+		    .center-table{
+  				margin: 0 auto !important;
+  				float: none !important;
+			}
 	    </style>
 	
 	</head>
@@ -25,116 +40,139 @@
 		</div>
 
 		<div class="container">
-		    <div class="col-md-6 top-50">
-			    <div class="row top-50">
-				    <div class="col-md-6 text-center">
-				       	<h2>Create small ship</h2>
-				       	<p>Rows beetwen 0 and <%= @board.rows.to_i - 1 %></p>
-				       	<p>Columns beetwen 0 and <%= @board.columns.to_i - 1 %></p>
-				       	<form role="form" method="POST" action="create_small">
-				           	<%= csrf_token_field %>
-				            <div class="form-group">
-				                <div class="input-group input-group-lg">
-				                    <span class="input-group-addon" id="sizing-addon1">Row</span>
-				                    <input min="0" class="form-control" placeholder="Select row" type="number" name="small_row">
-				                </div>
-				            </div>
-				    	    <div class="form-group">
-				                <div class="input-group input-group-lg">
-				                    <span class="input-group-addon" id="sizing-addon1">Column</span>
-				                    <input min="0" class="form-control" placeholder="Select column" type="number" name="small_column">
-				                </div>
-				            </div>
-				            <div class="btn-group " role="group" aria-label="...">
-				                <button type="submit" value="create" id="create_small_button" class="btn btn-primary btn-lg">Create Small Ship!</button>
-				            </div>
-				        </form>
-				    </div>
-			        <div class="col-md-6 text-center">
-			        	<h2>Is empty?</h2>
-			        	<p>Rows beetwen 0 and <%= @board.rows.to_i - 1 %></p>
-			        	<p>Columns beetwen 0 and <%= @board.columns.to_i - 1 %></p>
-			        	<form role="form" method="POST" action="check_cell">
-			            	<%= csrf_token_field %>
-			                <div class="form-group">
-			                    <div class="input-group input-group-lg">
-			                        <span class="input-group-addon" id="sizing-addon1">Row</span>
-			                        <input min="0" class="form-control" placeholder="Select row" type="number" name="row">
-			                    </div>
-			                </div>
-			                <div class="form-group">
-			                    <div class="input-group input-group-lg">
-			                        <span class="input-group-addon" id="sizing-addon1">Column</span>
-			                        <input min="0" class="form-control" placeholder="Select column" type="number" name="column">
-			                    </div>
-			                </div>
-			                <div class="btn-group " role="group" aria-label="...">
-			                    <button type="submit" value="check" id="check_cell_button" class="btn btn-primary btn-lg">Check Cell State!</button>
-			                </div>
-			            </form>
-			        </div>
-		        </div>
-		        <div class="row top-50">
-				    <div class="col-md-6 text-center">
-				       	<h2>Create large ship</h2>
-				       	<p>Rows beetwen 0 and <%= @board.rows.to_i - 1 %></p>
-				       	<p>Columns beetwen 0 and <%= @board.columns.to_i - 1 %></p>
-				       	<form role="form" method="POST" action="create_large">
-				           	<%= csrf_token_field %>
-				            <div class="form-group">
-				                <div class="input-group input-group-lg">
-				                    <span class="input-group-addon" id="sizing-addon1">Row</span>
-				                    <input min="0" class="form-control" placeholder="Select row" type="number" name="large_row">
-				                </div>
-				            </div>
-				    	    <div class="form-group">
-				                <div class="input-group input-group-lg">
-				                    <span class="input-group-addon" id="sizing-addon1">Column</span>
-				                    <input min="0" class="form-control" placeholder="Select column" type="number" name="large_column">
-				                </div>
-				            </div>
-				            <div class="btn-group " role="group" aria-label="...">
-				                <button type="submit" value="create" id="create_large_button" class="btn btn-primary btn-lg">Create Large Ship!</button>
-				            </div>
-				        </form>
-				    </div>
-				    <div class="col-md-6 text-center">
-			        	<h2>Shoot in position!</h2>
-			        	<p>Rows beetwen 0 and <%= @board.rows.to_i - 1 %></p>
-			        	<p>Columns beetwen 0 and <%= @board.columns.to_i - 1 %></p>
-			        	<form role="form" method="POST" action="shoot">
-			            	<%= csrf_token_field %>
-			                <div class="form-group">
-			                    <div class="input-group input-group-lg">
-			                        <span class="input-group-addon" id="sizing-addon1">Row</span>
-			                        <input min="0" class="form-control" placeholder="Target row" type="number" name="shoot_row">
-			                    </div>
-			                </div>
-			                <div class="form-group">
-			                    <div class="input-group input-group-lg">
-			                        <span class="input-group-addon" id="sizing-addon1">Column</span>
-			                        <input min="0" class="form-control" placeholder="Target column" type="number" name="shoot_column">
-			                    </div>
-			                </div>
-			                <div class="btn-group " role="group" aria-label="...">
-			                    <button type="submit" value="check" id="shoot_button" class="btn btn-primary btn-lg">Shoot!</button>
-			                </div>
-			            </form>
-			        </div>
-		        </div>
+			<div class="text-center top-50">
+		        <h1>Battleship</h1>
 		    </div>
-		    <div class="col-md-6 top-50">
+		    <div class="row">
+			    <div class="col-md-12">
+				    <div class="row top-50">
+					    <div class="col-md-3 text-center">
+					       	<h2>Create small ship</h2>
+					       	<p>Rows beetwen 0 and <%= @board.rows.to_i - 1 %></p>
+					       	<p>Columns beetwen 0 and <%= @board.columns.to_i - 1 %></p>
+					       	<form role="form" method="POST" action="create_small">
+					           	<%= csrf_token_field %>
+					            <div class="form-group">
+					                <div class="input-group input-group-lg">
+					                    <span class="input-group-addon" id="sizing-addon1">Row</span>
+					                    <input min="0" class="form-control" placeholder="Select row" type="number" name="small_row">
+					                </div>
+					            </div>
+					    	    <div class="form-group">
+					                <div class="input-group input-group-lg">
+					                    <span class="input-group-addon" id="sizing-addon1">Column</span>
+					                    <input min="0" class="form-control" placeholder="Select column" type="number" name="small_column">
+					                </div>
+					            </div>
+					            <div class="btn-group " role="group" aria-label="...">
+					                <button type="submit" value="create" id="create_small_button" class="btn btn-primary btn-lg">Create Small Ship!</button>
+					            </div>
+					        </form>
+					    </div>
+				        <div class="col-md-3 text-center">
+				        	<h2>Is empty?</h2>
+				        	<p>Rows beetwen 0 and <%= @board.rows.to_i - 1 %></p>
+				        	<p>Columns beetwen 0 and <%= @board.columns.to_i - 1 %></p>
+				        	<form role="form" method="POST" action="check_cell">
+				            	<%= csrf_token_field %>
+				                <div class="form-group">
+				                    <div class="input-group input-group-lg">
+				                        <span class="input-group-addon" id="sizing-addon1">Row</span>
+				                        <input min="0" class="form-control" placeholder="Select row" type="number" name="row">
+				                    </div>
+				                </div>
+				                <div class="form-group">
+				                    <div class="input-group input-group-lg">
+				                        <span class="input-group-addon" id="sizing-addon1">Column</span>
+				                        <input min="0" class="form-control" placeholder="Select column" type="number" name="column">
+				                    </div>
+				                </div>
+				                <div class="btn-group " role="group" aria-label="...">
+				                    <button type="submit" value="check" id="check_cell_button" class="btn btn-primary btn-lg">Check Cell State!</button>
+				                </div>
+				            </form>
+				        </div>
+			            <div class="col-md-3 text-center">
+					       	<h2>Create large ship</h2>
+					       	<p>Rows beetwen 0 and <%= @board.rows.to_i - 1 %></p>
+					       	<p>Columns beetwen 0 and <%= @board.columns.to_i - 1 %></p>
+					       	<form role="form" method="POST" action="create_large">
+					           	<%= csrf_token_field %>
+					            <div class="form-group">
+					                <div class="input-group input-group-lg">
+					                    <span class="input-group-addon" id="sizing-addon1">Row</span>
+					                    <input min="0" class="form-control" placeholder="Select row" type="number" name="large_row">
+					                </div>
+					            </div>
+					    	    <div class="form-group">
+					                <div class="input-group input-group-lg">
+					                    <span class="input-group-addon" id="sizing-addon1">Column</span>
+					                    <input min="0" class="form-control" placeholder="Select column" type="number" name="large_column">
+					                </div>
+					            </div>
+					            <div class="btn-group " role="group" aria-label="...">
+					                <button type="submit" value="create" id="create_large_button" class="btn btn-primary btn-lg">Create Large Ship!</button>
+					            </div>
+					        </form>
+					    </div>
+					    <div class="col-md-3 text-center">
+				        	<h2>Shoot in position!</h2>
+				        	<p>Rows beetwen 0 and <%= @board.rows.to_i - 1 %></p>
+				        	<p>Columns beetwen 0 and <%= @board.columns.to_i - 1 %></p>
+				        	<form role="form" method="POST" action="shoot">
+				            	<%= csrf_token_field %>
+				                <div class="form-group">
+				                    <div class="input-group input-group-lg">
+				                        <span class="input-group-addon" id="sizing-addon1">Row</span>
+				                        <input min="0" class="form-control" placeholder="Target row" type="number" name="shoot_row">
+				                    </div>
+				                </div>
+				                <div class="form-group">
+				                    <div class="input-group input-group-lg">
+				                        <span class="input-group-addon" id="sizing-addon1">Column</span>
+				                        <input min="0" class="form-control" placeholder="Target column" type="number" name="shoot_column">
+				                    </div>
+				                </div>
+				                <div class="btn-group " role="group" aria-label="...">
+				                    <button type="submit" value="check" id="shoot_button" class="btn btn-primary btn-lg">Shoot!</button>
+				                </div>
+				            </form>
+				        </div>
+			        </div>
+			    </div>
+		    </div>
+		    <div class="row">
 		    	<div class="row panel panel-primary top-50">
 					<div class="panel-heading">
-				    	<h3 class="panel-title">Last Event</h3>
+				    	<h3 class="panel-title">Last Event:</h3>
 				  	</div>
 				  	<div class="panel-body" id="last_event">
 				    	<%= @last_event %>
 				  	</div>
 				</div>
+		    	<div class="row top-50">
+					<div class="text-center" id="last_event">
+				    	<div class="col-md-12 text-center board">
+				            <table class="center-table">
+				            	<% for @row in @board.coords %>
+				                    <tr>
+				                        <% for @cell in @row %>
+				                	        <% if @cell.is_water %>
+				                    	        <td class="water"> </td>
+				                            <% elsif @cell.was_hit %>
+				                        	    <td class="ship-hit"> </td>
+				                            <% else %>
+				                        	    <td class="ship"> </td>
+				                            <% end %>
+				                        <% end %>
+				                    </tr>
+				                <% end %>
+				            </table>
+				        </div>
+				    </div>
+            	</div>
 		    </div>
 		</div>
-	</div>
 
 	</body>
 
